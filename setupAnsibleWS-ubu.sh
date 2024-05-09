@@ -9,7 +9,7 @@ cat /etc/os-release
 
 #Start installing software
 sudo apt-get update
-sudo apt-get -y install open-vm-tools-desktop sshpass opensshserver coreutils
+sudo apt-get -y install open-vm-tools-desktop sshpass openssh-server openssh-client coreutils
 
 #xrdp
 wget https://www.c-nergy.be/downloads/xRDP/xrdp-installer-1.5.zip
@@ -32,7 +32,7 @@ sudo apt-cache search ansible
 sudo apt list ansible
 sudo apt list available ansible
 sudo apt install -y ansible
-ansible –-version
+ansible --version
 sudo apt list available ansible-core
 sudo apt upgrade ansible
 #cd to home folder of user (which allows sudo)
