@@ -9,7 +9,7 @@ cat /etc/os-release
 
 #Start installing software
 sudo apt-get update
-sudo apt-get -y install open-vm-tools-desktop sshpass openssh-server openssh-client coreutils
+sudo apt-get -y install open-vm-tools-desktop sshpass openssh-server openssh-client coreutils curl
 
 #xrdp
 wget https://www.c-nergy.be/downloads/xRDP/xrdp-installer-1.5.zip
