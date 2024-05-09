@@ -22,8 +22,8 @@ chmod +x  xrdp-installer-1.5.sh
 sudo cp /etc/ssh/ssh_config /etc/ssh_ssh_config_org
 #Uncomment #.  Passwordauthentication no to yes
 sudo sed -i "s/\#   Passwordauthentication no/    Passwordauthentication yes/" /etc/ssh/ssh_config
-sudo systemctl start sshd
-sudo systemctl enable sshd
+sudo systemctl restart ssh
+sudo systemctl enable ssh
 
 #install ansible
 #https://www.youtube.com/watch?v=1LhV87kjHlo
@@ -64,8 +64,8 @@ sudo ansible-galaxy collection install community.vmware
 git clone https://github.com/nutanix/nutanix.ansible.git
 #2. Git checkout release version
 cd nutanix.ansible
-ver="v1.9.0"
-git checkout $ver -b $ver
+ver="1.9.0"
+git checkout v$ver -b v$ver
 #3. Build the collection
 sudo ansible-galaxy collection build
 #4. Install the collection
