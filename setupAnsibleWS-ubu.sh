@@ -9,7 +9,7 @@ cat /etc/os-release
 
 #Start installing software
 sudo apt-get update
-sudo apt-get -y install open-vm-tools-desktop sshpass opensshserver
+sudo apt-get -y install open-vm-tools-desktop sshpass opensshserver coreutils
 
 #xrdp
 wget https://www.c-nergy.be/downloads/xRDP/xrdp-installer-1.5.zip
@@ -63,6 +63,7 @@ ansible-galaxy collection install community.vmware
 #1. Clone the GitHub repository to a local directory
 git clone https://github.com/nutanix/nutanix.ansible.git
 #2. Git checkout release version
+cd nutanix.ansible
 ver="v1.9.0"
 git checkout $ver -b $ver
 #3. Build the collection
