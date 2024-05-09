@@ -1,6 +1,7 @@
 #!/bin/bash
 # Setup an ansible Workstation on Ubuntu 24.04
 set -x
+cd ~
 
 #Some queries
 lsb_release -a
@@ -8,39 +9,39 @@ cat /etc/os-release
 
 #Start installing software
 sudo apt-get update
-Sudo apt-get -y install open-vm-tools-desktop sshpass git opensshserver
+sudo apt-get -y install open-vm-tools-desktop sshpass opensshserver
 
 #xrdp
 wget https://www.c-nergy.be/downloads/xRDP/xrdp-installer-1.5.zip
 unzip xrdp-installer-1.5.zip 
-chmod +x  ~/Downloads/xrdp-installer-1.5.sh
+chmod +x  xrdp-installer-1.5.sh
 ./xrdp-installer-1.5.sh
 #./xrdp-installer-1.5.sh -r     (to remove the xrdp packages)
 
 #Configure ssh server
 sudo cp /etc/ssh/ssh_config /etc/ssh_ssh_config_org
 #Uncomment #.  Passwordauthentication no to yes
-sudo sed -i "s/Passwordauthentication no/Passwordauthentication yes/"
-sudo systemctl start ssh
-sudo systemctl enable ssh
+sudo sed -i "s/Passwordauthentication no/Passwordauthentication yes/" /etc/ssh/ssh_config
+sudo systemctl start sshd
+sudo systemctl enable sshd
 
 #install ansible
 #https://www.youtube.com/watch?v=1LhV87kjHlo
 #Some queries
-apt-cache search ansible
-apt list ansible
-apt list available ansible
-apt install -y ansible
+sudo apt-cache search ansible
+sudo apt list ansible
+sudo apt list available ansible
+sudo apt install -y ansible
 ansible –version
-apt list available ansible-core
-apt upgrade ansible
+sudo apt list available ansible-core
+sudo apt upgrade ansible
 #cd to home folder of user (which allows sudo)
 # cd /etc/ansible
 #Nosuch file or directory
 sudo mkdir -pv /etc/ansible
 sudo cd /etc/ansible
 sudo ls
-sudo ansible-config init –disabled > ansible.cfg
+sudo bash -c "ansible-config init –disabled > ansible.cfg"
 #vi hosts
 sudo bash -c "echo localhost ansible_connection=local >> ansible.cfg"
 ansible all -m ping
@@ -49,7 +50,7 @@ ansible all -m ping
 cd ~
 sudo apt install -y python3 python3-pip
 
-sudo rm /usr/lib/python3.12/EXTERNaLLY-MANAGED
+sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 #the .12 is version specific
 
 #setup for VMware
