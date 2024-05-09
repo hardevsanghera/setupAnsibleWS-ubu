@@ -4,7 +4,7 @@ set -x
 
 #Some queries
 lsb_release -a
-cat /etc/os-rlease
+cat /etc/os-release
 
 #Start installing software
 sudo apt-get update
@@ -73,6 +73,8 @@ ansible-galaxy collection install nutanix-ncp-$ver.tar.gz --force
 #Install vscode
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo \ tee /etc/apt/sources.list.d/vs-code.list
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+
+#Add code to allow passwordless sudo for ubuadmin
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo apt-get update
 sudo apt-get install code
