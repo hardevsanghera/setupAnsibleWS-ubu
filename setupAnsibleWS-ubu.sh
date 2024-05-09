@@ -70,7 +70,7 @@ git checkout v$ver -b v$ver
 sudo ansible-galaxy collection build
 #4. Install the collection
 #Note add --force option for rebuilding or reinstalling to overwrite existing data
-sudo ansible-galaxy collection install nutanix.ncp-$ver.tar.gz --force
+sudo ansible-galaxy collection install nutanix-ncp-$ver.tar.gz --force
 
 #Install vscode
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo \ tee /etc/apt/sources.list.d/vs-code.list
