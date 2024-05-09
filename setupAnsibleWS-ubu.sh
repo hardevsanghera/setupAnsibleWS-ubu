@@ -21,7 +21,7 @@ chmod +x  xrdp-installer-1.5.sh
 #Configure ssh server
 sudo cp /etc/ssh/ssh_config /etc/ssh_ssh_config_org
 #Uncomment #.  Passwordauthentication no to yes
-sudo sed -i "s/Passwordauthentication no/Passwordauthentication yes/" /etc/ssh/ssh_config
+sudo sed -i "s/\#   Passwordauthentication no/    Passwordauthentication yes/" /etc/ssh/ssh_config
 sudo systemctl start sshd
 sudo systemctl enable sshd
 
@@ -32,7 +32,7 @@ sudo apt-cache search ansible
 sudo apt list ansible
 sudo apt list available ansible
 sudo apt install -y ansible
-ansible –version
+ansible –-version
 sudo apt list available ansible-core
 sudo apt upgrade ansible
 #cd to home folder of user (which allows sudo)
@@ -54,9 +54,9 @@ sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 #the .12 is version specific
 
 #setup for VMware
-pip install pyvmomi --user
-pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git --user
-ansible-galaxy collection install community.vmware
+sudo pip install pyvmomi --user
+sudo pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git --user
+sudo ansible-galaxy collection install community.vmware
 
 #setup for Nutanix
 #https://www.nutanix.dev/2022/08/05/getting-started-with-the-nutanix-ansible-module/
@@ -67,10 +67,10 @@ cd nutanix.ansible
 ver="v1.9.0"
 git checkout $ver -b $ver
 #3. Build the collection
-ansible-galaxy collection build
+sudo ansible-galaxy collection build
 #4. Install the collection
 #Note add --force option for rebuilding or reinstalling to overwrite existing data
-ansible-galaxy collection install nutanix-ncp-$ver.tar.gz --force
+sudo ansible-galaxy collection install nutanix.ncp-$ver.tar.gz --force
 
 #Install vscode
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo \ tee /etc/apt/sources.list.d/vs-code.list
