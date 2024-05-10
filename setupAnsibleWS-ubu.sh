@@ -71,7 +71,7 @@ ansible-galaxy collection install community.vmware
 #4. Install the collection
 #Note add --force option for rebuilding or reinstalling to overwrite existing data
 #sudo ansible-galaxy collection install nutanix-ncp-$ver.tar.gz --force
-ansible-galaxy collection install nutanix-ncp
+ansible-galaxy collection install nutanix.ncp
 
 #Install vscode
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo \ tee /etc/apt/sources.list.d/vs-code.list
