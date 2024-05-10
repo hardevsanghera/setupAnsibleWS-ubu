@@ -39,11 +39,11 @@ sudo apt upgrade ansible
 # cd /etc/ansible
 #Nosuch file or directory
 sudo mkdir -pv /etc/ansible
-sudo cd /etc/ansible
-sudo ls
-sudo bash -c "ansible-config init –disabled > ansible.cfg"
+#sudo cd /etc/ansible
+#sudo ls
+sudo bash -c "ansible-config init –disabled > /etc/ansible/ansible.cfg"
 #vi hosts
-sudo bash -c "echo localhost ansible_connection=local >> ansible.cfg"
+sudo bash -c "echo localhost ansible_connection=local >> /etc/ansible/ansible.cfg"
 ansible all -m ping
 
 #Python3
@@ -55,8 +55,8 @@ sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 
 #setup for VMware
 pip install pyvmomi
-sudo pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
-sudo ansible-galaxy collection install community.vmware
+pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+ansible-galaxy collection install community.vmware
 
 #setup for Nutanix
 #https://www.nutanix.dev/2022/08/05/getting-started-with-the-nutanix-ansible-module/
@@ -79,7 +79,7 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 
 #Add code to allow passwordless sudo for ubuadmin
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sudo apt-get update
-sudo apt-get install code
+#sudo apt-get update
+#sudo apt-get install code
 sudo snap install code --classic
 #You will need to install your extensions
