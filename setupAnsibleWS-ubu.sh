@@ -41,9 +41,9 @@ sudo apt upgrade ansible
 sudo mkdir -pv /etc/ansible
 #sudo cd /etc/ansible
 #sudo ls
-sudo bash -c "ansible-config init –disabled > /etc/ansible/ansible.cfg"
+#sudo bash -c "ansible-config init –disabled > /etc/ansible/ansible.cfg"
 #vi hosts
-sudo bash -c "echo localhost ansible_connection=local >> /etc/ansible/ansible.cfg"
+#sudo bash -c "echo localhost ansible_connection=local >> /etc/ansible/ansible.cfg"
 ansible all -m ping
 
 #Python3
