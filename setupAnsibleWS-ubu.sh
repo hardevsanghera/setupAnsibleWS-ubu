@@ -54,23 +54,24 @@ sudo rm /usr/lib/python3.12/EXTERNALLY-MANAGED
 #the .12 is version specific
 
 #setup for VMware
-sudo pip install pyvmomi --user
-sudo pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git --user
+pip install pyvmomi
+sudo pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
 sudo ansible-galaxy collection install community.vmware
 
 #setup for Nutanix
 #https://www.nutanix.dev/2022/08/05/getting-started-with-the-nutanix-ansible-module/
 #1. Clone the GitHub repository to a local directory
-git clone https://github.com/nutanix/nutanix.ansible.git
+#git clone https://github.com/nutanix/nutanix.ansible.git
 #2. Git checkout release version
-cd nutanix.ansible
-ver="1.9.0"
-git checkout v$ver -b v$ver
+#cd nutanix.ansible
+#ver="1.9.0"
+#git checkout v$ver -b v$ver
 #3. Build the collection
-sudo ansible-galaxy collection build
+#sudo ansible-galaxy collection build
 #4. Install the collection
 #Note add --force option for rebuilding or reinstalling to overwrite existing data
-sudo ansible-galaxy collection install nutanix-ncp-$ver.tar.gz --force
+#sudo ansible-galaxy collection install nutanix-ncp-$ver.tar.gz --force
+ansible-galaxy collection install nutanix-ncp
 
 #Install vscode
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo \ tee /etc/apt/sources.list.d/vs-code.list
