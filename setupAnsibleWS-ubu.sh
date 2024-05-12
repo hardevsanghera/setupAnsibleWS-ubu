@@ -34,7 +34,7 @@ sudo apt list available ansible
 sudo apt install -y ansible
 ansible --version
 sudo apt list available ansible-core
-sudo apt upgrade ansible
+sudo apt upgrade -y ansible
 #cd to home folder of user (which allows sudo)
 # cd /etc/ansible
 #Nosuch file or directory
